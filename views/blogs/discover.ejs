@@ -1,0 +1,22 @@
+<% include ../partials/header %> 
+
+
+<% include ../functions %> 
+
+<div class="container">
+		<% blogs.forEach(function(blog){ %>
+			<div class="post-row">
+				<div class="header">
+					<a href="/blogs/<%=blog._id %>"><%= blog.title %>
+					</a>
+				</div>
+				<span> <%= blog.create %> </span>
+				<div class="blog-preview">
+					<%- convertToHTML(blog.content).replace(/<\/?[^>]+(>|$)/g, "").substring(0, 150) %>.. 
+				</div>
+			<div class= "border-line"> </div>
+			</div>
+		<% }); %>
+</div>
+
+<% include ../partials/footer %> 

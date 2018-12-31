@@ -1,0 +1,96 @@
+.article-title{
+  text-align: center;
+  font-size:35px;
+  padding-top: 50px
+}
+
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 180px;
+  margin-top: 0;
+  height: 500px;
+  color: #fff;
+  background-image:url("/image/jason-leung-479251-unsplash.jpg");
+  background-color: #000000;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#landing-header a {
+  margin-top: 20px;
+}
+
+.wrap-login {
+  width: 500px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  margin:0 auto;
+  margin-top: 40px;
+  padding-top: 100px;  
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 100px;
+
+}
+
+.form-button {
+  padding-left: 40%;
+}
+
+.blog-editor {
+  margin-top: 40px; 
+  margin-bottom: 40px;
+}
+
+#editor {
+  height: 375px;
+  margin-bottom: 20px;
+}
+#input-title {
+  height: 40px;
+  font-size: 30px;
+  width: 100%
+
+}
+.post-row {
+  padding: 5px;
+  margin: 0;
+  border-bottom: solid 2px; 
+  width: 70%;
+}
+
+.post-row .header {
+  font-size: 25px;
+}
+
+.post-row span {
+  font-size: 15px;
+}
+
+.blog-preview div{
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.blog-show {
+  padding: 15%; 
+  padding-top: 40px; 
+}
+
+.blog-content div{
+  margin: 0;
+  padding: 0;
+  padding-top: 30px;
+}
+
+.error_message {
+  font-family: 'Roboto Slab', serif;
+}
+
+.intro_feature {
+  
+}

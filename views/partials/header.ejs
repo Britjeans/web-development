@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FreeBlog</title>
+
+		<script type="text/javascript" src="public/js/scripts.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+    </head>
+    <body>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		  <a class="navbar-brand" href="/home">Wanying</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+
+		  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+		    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+		      <li class="nav-item active" >
+		        <a class="nav-link" href="/blogs/discover">Discover</a>
+		      </li>
+		      <li class="nav-item">
+		      	<% if(!currentUser){ %>
+		        	<a class="nav-link" href="/register">Blogs</a>
+		        <% } else { %>
+		        	<a class="nav-link" href="/blogs/index">Blogs</a>
+		        <% } %>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="#">Planner</a>
+		      </li>
+		    </ul>
+
+			<ul class="navbar-nav mr-4 mt-2 mt-lg-0">
+			    <li class="nav-item">
+			      	<% if(!currentUser){ %>
+				        <a class="nav-link" href="/login">Login</a>
+				    <% } else { %>
+				      	<a class="nav-link" href="/blogs/new">New Post</a></li>
+			      	<% } %>
+			    </li>
+			    <li class="nav-item">
+					<% if(!currentUser){ %>
+			        	<a class="nav-link" href="/register">Register</a>
+			        <% } else { %>
+			        	<a class="nav-link" href="/logout">Logout</a></li>
+			    	<% } %>
+			    </li>
+		  	</ul>
+
+		    <form class="form-inline my-2 my-lg-0">
+		      <input class="form-control mr-sm-2" type="search" placeholder="Search">
+		      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+		    </form>
+		  </div>
+		</nav>
+
+
+
+
+
+
+		

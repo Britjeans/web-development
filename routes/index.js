@@ -40,9 +40,21 @@ router.get('/logout', function(req, res) {
 
 //register function
 router.get('/register', function(req, res) {
-	res.render("register", { success: req.session.success, errors: req.session.errors, existed: false});
-	req.session.errors = null;
-	req.session.success = true;
+    if(User) {
+        User.count({}, function(err, c) {
+            if(err) {
+                console.log(err);
+            }
+            else if(c == 100) {
+                res.redirect('/register_error');
+            }
+        });
+    }
+    else {
+        res.render("register", { success: req.session.success, errors: req.session.errors, existed: false});
+        req.session.errors = null;
+        req.session.success = true;
+    }
 
 });
 	
@@ -54,6 +66,7 @@ router.post("/register", function(req, res) {
         nickname: 'required'
 	});
     validator.check().then(function (matched) {
+
         if (!matched) {
         	req.session.errors = validator.errors;
       		req.session.success = false;

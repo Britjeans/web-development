@@ -35,7 +35,7 @@ router.post('/login',function(req, res, next){
 //logout function
 router.get('/logout', function(req, res) {
 	req.logout();
-	res.redirect("/home");
+	res.redirect("/");
 });
 
 //register function

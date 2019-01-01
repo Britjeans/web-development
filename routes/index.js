@@ -48,13 +48,14 @@ router.get('/register', function(req, res) {
         else if(c == 100) {
             res.redirect('/register_error');
         }
+        else {
+            res.render("register", { success: req.session.success, errors: req.session.errors, existed: false});
+            req.session.errors = null;
+            req.session.success = true;
+        }
     });
     
-    else {
-        res.render("register", { success: req.session.success, errors: req.session.errors, existed: false});
-        req.session.errors = null;
-        req.session.success = true;
-    }
+
 
 });
 	

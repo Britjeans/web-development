@@ -23,7 +23,7 @@ var indexRoutes = require("./routes/index")
 
 //connect to mongodb databse
 ///mongodb://<dbuser>:<dbpassword>@ds129776.mlab.com:29776/wanyingd
-mongoose.connect("mmongodb://<Britjeans>:<woaini110119!>@ds129776.mlab.com:29776/wanyingd");
+mongoose.connect("mmongodb://wanyingd:wanyingd1996@ds129776.mlab.com:29776/wanyingd");
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {

@@ -22,7 +22,8 @@ var indexRoutes = require("./routes/index")
 
 
 //connect to mongodb databse
-mongoose.connect("mongodb://localhost/wanyingd");
+///mongodb://<dbuser>:<dbpassword>@ds129776.mlab.com:29776/wanyingd
+mongoose.connect("mmongodb://<Britjeans>:<woaini110119!>@ds129776.mlab.com:29776/wanyingd");
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -217,7 +218,10 @@ function isPublic(value) {
   return value.privacy == "public";
 }
 
-
-app.listen(8888, function() {
-    console.log("Web Sever is running")
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port, function(){
+	console.log("The Web Application is Running");
 });

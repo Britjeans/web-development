@@ -120,7 +120,6 @@ app.post("/blogs/index", function(req, res) {
 	                    	console.log(err);
 	                    	res.render("blogs/new");
 	                	} else {
-	                    	console.log(data);
 	                    	res.redirect("/blogs/index");
 	                	}
             		});
@@ -151,7 +150,7 @@ app.delete("/blogs/:id", function(req, res) {
 					else {
 						console.log("successfully removed blog");
 					}
-				})
+				});
 			res.redirect("/blogs/index");
 		}
 	});
@@ -203,7 +202,7 @@ app.get("/blogs/author/:id", function(req, res) {
 		//find current user
 	User.findOne({_id: req.params.id}).populate("blogs").exec(function(err, foundUser){
 		if(err){
-			console.log("ERROR!");
+			console.log(err);
 		}
 		else{
 			const blogs = foundUser.blogs.filter(isPublic);

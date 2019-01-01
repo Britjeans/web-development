@@ -5,7 +5,7 @@ var User = require("../models/user");
 
 const v = require("node-input-validator");
 
-router.get('/home', function(req, res) {
+router.get('/', function(req, res) {
 	res.render("index");
 });
 

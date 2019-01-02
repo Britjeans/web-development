@@ -8,9 +8,9 @@
   z-index: 1;
   position: relative;
   text-align: center;
-  padding-top: 180px;
+  padding-top: 200px;
   margin-top: 0;
-  height: 500px;
+  height: 550px;
   color: #fff;
   background-image:url("/image/jason-leung-479251-unsplash.jpg");
   background-color: #000000;
@@ -56,9 +56,10 @@
 
 }
 .post-row {
-  padding: 5px;
+  padding: 20px;
   margin: 0;
-  border-bottom: solid 2px; 
+  border-bottom: solid 1px; 
+  border-color: gray;
   width: 70%;
 }
 
@@ -70,10 +71,11 @@
   font-size: 15px;
 }
 
-.blog-preview div{
-  font-size: 15px;
+.blog-preview{
+  font-size: 18px;
   margin: 0;
   padding: 0;
+  padding-bottom: 10px;
 }
 
 .blog-show {
@@ -91,6 +93,39 @@
   font-family: 'Roboto Slab', serif;
 }
 
-.intro_feature {
-  
+
+.brief-intro {
+  text-align: center;
+  margin: 0;
+  padding-top: 8%;
+  padding-left: 20%;
+  padding-right: 20%;
+  height: 300px;
+  color: #fff;
+  background-color: #2A86A8;
+}
+
+.website-features {
+  padding-top: 8%;
+  padding-left: 8%;
+  padding-right: 8%;
+  height: 400px;
+  margin: 0;
+  color: #fff;
+  background-color: #2A86A8;
+}
+
+.contact-info {
+  text-align: center;
+  padding-top: 15px;
+  height: 160px;
+  margin: 0;
+  color: #fff;
+  background-color: #000;
+
+}
+
+
+.blog-header {
+  color: #000;
 }

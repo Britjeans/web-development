@@ -24,7 +24,7 @@
 		</script>
 		
 		<script>
-			var Delta = Quill.import('delta');
+			//var Delta = Quill.import('delta');
 
 			function process() {
 			  	document.getElementById("editor_hidden").value = JSON.stringify(quill.getContents());
@@ -35,7 +35,62 @@
 				quill.setContents(value);
 			}
 		</script>
+		<script>
 
+			//calculate the maximum days of this month
+			function max_days(year, month) {
+				var maxDays;
+				var days = [1, 3, 5, 7, 8, 10, 12];
+				if(year%4 == 0 && month == 2) {
+					if(year%400 == 0 || year%100 != 0) {
+						maxDays = 29;
+					}
+				}
+				else if(month == 2){
+					maxDays = 28;
+				}
+				else if(days.includes(month)) {
+					maxDays = 31;
+				}
+				else {
+					maxDays = 30;
+				}
+				return maxDays;
+			}
+			//get the position  of first day of this month
+			function get_first_pos(day, weekday) {
+				var firstCol = (weekday - day + 1 + 28) % 7;
+				return firstCol;
+			}
+
+			//fill the calendar
+
+			function fill_calendar(year, month, day, weekday) {
+				var maxDays = max_days(year, month);
+				var firstCol = get_first_pos(day, weekday) + 7;
+				var cal = document.getElementById("calendar");
+				var rows = cal.getElementsByClassName("row");
+				var counter = 1;
+
+				for(var row of rows) {
+					var cells = row.getElementsByClassName("col");
+					for(var cell of cells) {
+						if(firstCol <= 0 && counter <= maxDays) {
+							if(counter == day) {
+								cell.innerHTML = "<b>" + counter.toString() + "</b>" ;
+							}
+							else {
+								cell.innerText = counter;
+							}
+							counter ++;
+						}
+						firstCol --;
+					}
+				}
+			}
+
+
+		</script>
 
 	</body>
 </html>

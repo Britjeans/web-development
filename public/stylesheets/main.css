@@ -115,6 +115,35 @@
   background-color: #2A86A8;
 }
 
+
+.blog-header {
+  color: #000;
+}
+
+#calendar {
+  position: relative;
+  width: 65%;
+  left: 300px;
+  border-right: solid 1px;
+  border-bottom: solid 1px;
+  border-color: gray;
+  margin: 20px;
+}
+#calendar .row {
+  margin: 0;
+  padding: 0;
+
+}
+
+#calendar .row .col {
+  margin: 0;
+  padding: 0;
+  border-top: solid 1px;
+  border-left: solid 1px;
+  border-color: gray;
+  height: 80px;
+}
+
 .contact-info {
   text-align: center;
   padding-top: 15px;
@@ -125,7 +154,9 @@
 
 }
 
-
-.blog-header {
-  color: #000;
+.cal-header .row {
+  height: 40px;
 }
+
+
+

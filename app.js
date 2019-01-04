@@ -16,7 +16,6 @@ var express     = require("express"),
 	QuillDeltaToHtmlConverter = require('quill-delta-to-html').QuillDeltaToHtmlConverter;
 
 
-
 //requiring routes
 var indexRoutes = require("./routes/index")
 
@@ -230,9 +229,18 @@ app.post("/blogs/search", function(req, res) {
 });
 
 
-
-
-
+//==========================================
+//Planner Routes
+//==========================================
+app.get("/planner", function(req, res) {
+	//get current time
+	var date = new Date();
+	var year = date.getFullYear();
+	var month = date.getMonth() + 1;
+	var day = date.getDate();
+	var weekday = date.getDay(); 
+	res.render("planner/index", {year: year, month: month, day: day, weekday: weekday});
+});
 
 
 

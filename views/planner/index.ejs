@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="/stylesheets/main.css">
     </head>
 
-    <body onload="fill_editor(<%= blog.content %>)">
+    <body onload="fill_calendar(<%= year %>, <%= month %>, <%= day %>, <%= weekday %>)">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		  <a class="navbar-brand" href="/">Wanying</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,40 +59,143 @@
 		  </div>
 		</nav>
 
-
-<div class="container">
-	<div class="blog-editor">
+<div id="calendar">
+	<div class="cal-header">
 		<div class="row">
-			  <div class="col-3">
-
-			  </div>
-			  <div class="col-9">
-			    <div class="tab-content" id="v-pills-tabContent">
-			      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-			      	<form action="/blogs/<%=blog._id%>?_method=PUT" method="POST" onsubmit="javascript: return process();">
-			      		<input type="text" id="input-title" name="blog[title]" value="<%= blog.title %>">
-
-			      		<div id="editor"></div>
-			      		<input type="hidden" id="editor_hidden" name="blog[content]">
-
-						<div class="form-check" style="display: inline;">
-					    	<input class="form-check-input" type="radio" name="blog_type" id="public" value="public" checked>
-					        <label class="form-check-label" for="public">public</label>
-					    </div>
-
-					    <div class="form-check" style="display: inline;margin-left: 10px;">
-					    	<input class="form-check-input" type="radio"  name="blog_type" id="private" value="private">
-					        <label class="form-check-label" for="private">private</label>
-					    </div>
-						
-						<button type="submit" class="btn btn-primary" style="display: inline;margin-left: 10px; border-color: #F44082; background-color: #F3568F;">Update Blog</button>
-			      	</form>
-			      </div>
-			    </div>
-			  </div>
+			<div class="col">
+				MONDAY
+			</div>
+			<div class="col">
+				TUESDAY
+			</div>
+			<div class="col">
+				WENDSDAY
+			</div>
+			<div class="col">
+				THURSDAY
+			</div>
+			<div class="col">
+				FRIDAY
+			</div>
+			<div class="col">
+				SATURDAY
+			</div>
+			<div class="col">
+				SUNDAY
 			</div>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		</div>
+	</div>
 </div>
+
+<div class="contact-info">
+	<p><b>Contact Me</b></p>
+	<p>linkedin:
+		<a href="https://linkedin.com/in/wanying-ding-984748151style="color:#fff">
+			linkedin.com/in/wanying-ding-984748151
+		</a>
+	</p>
+	<p>github:
+		<a href="https://github: https://github.com/Britjeansstyle="color:#fff">
+			https://github.com/Britjeans
+		</a> 
+	</p>
+</div>
+
 
 <% include ../partials/footer %> 

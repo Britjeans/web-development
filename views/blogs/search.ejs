@@ -1,11 +1,8 @@
 <% include ../partials/header %> 
 
-
 <% include ../functions %> 
 
 <div class="container">
-	<h1><%= currentUser.nickname%>' Blogs</h1>
-	
 		<% blogs.forEach(function(blog){ %>
 			<div class="post-row">
 				<div class="header">
@@ -16,16 +13,9 @@
 				<div class="blog-preview">
 					<%- convertToHTML(blog.content).replace(/<\/?[^>]+(>|$)/g, "").substring(0, 150) %>.. 
 				</div>
-				<form style="display: inline" method="POST" action="/blogs/<%=blog._id%>?_method=DELETE">
-					<button type="submit" class="btn btn-outline-primary" style="border-color: #F3568F; color: #F3568F;">delete</button>
-				</form>
-				<form style="display: inline" method="GET" action="/blogs/<%=blog._id%>/edit">
-					<button type="submit" class="btn btn-outline-primary" style="border-color: #F3568F; color: #F3568F;">edit</button>
-				</form>
+
 			<div class= "border-line"> </div>
 			</div>
 		<% }); %>
-	
-</div>
 
 <% include ../partials/footer %> 

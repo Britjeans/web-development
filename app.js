@@ -213,6 +213,30 @@ app.get("/blogs/author/:id", function(req, res) {
 	//res.render("blogs/public_post", {blogs: blogs});
 });
 
+
+
+//search function for blogs
+app.post("/blogs/search", function(req, res) {
+	var query = ".*" + req.body.search + ".*";
+	Blog.find({title: new RegExp(query, "i"), privacy: "public" }, function(err, blogs) {
+		if(err) {
+			console.log(err);
+		}
+		else {
+			res.render("blogs/search", {blogs: blogs});
+		}
+	});
+	
+});
+
+
+
+
+
+
+
+
+
 function isPublic(value) {
   return value.privacy == "public";
 }

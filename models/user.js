@@ -8,10 +8,12 @@ var UserSchema = new mongoose.Schema({
     blogs:[{
     	type: mongoose.Schema.Types.ObjectId,
     	ref: "Blog"
+    }],
+    plans: [{
+    	type: mongoose.Schema.Types.ObjectId,
+    	ref: "Planner"
     }]
 });
-
-
 
 UserSchema.plugin(passportLocalMongoose);
 

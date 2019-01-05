@@ -58,131 +58,158 @@
 		    </form>
 		  </div>
 		</nav>
+<div id="calendar-features">
+	<div class="to-do-list">
+		<div class="planner-header">
+			<h2>To Do List</h2>
+			<h4><%= year %>-<%= month %>-<%= day %></h4>
+		</div>
+		<form action="\planner" method="POST">
+			<input type="text" name="todo">
+			<input type="submit" class="btn btn-primary" style="display: inline;margin-left: 10px; border-color: #F44082; background-color: #F3568F;">
+		</form>
+		<div id="event-list">
+			<% if(plans) { %>
+			<% plans.content.forEach(function(block) { %>
+				<div class="row">
+					<div calss="col">
+						<div class="plan-content"><%= block.plan %></div>
+						<form class="plan-form"  method="POST" action="/plans/<%= plans._id %>/delete/<%= block._id %>?_method=DELETE">
+							<input type="submit" value="delete" class="btn btn-sm btn-primary" style="border-color: #F44082; background-color: #F3568F;">
+						</form>
+					</div>
+				</div>
+			<% });} %>
 
-<div id="calendar">
-	<div class="cal-header">
+		</div>
+	</div>
+
+
+	<div id="calendar">
+		<div class="cal-header">
+			<div class="row">
+				<div class="col">
+					Mon
+				</div>
+				<div class="col">
+					Tue
+				</div>
+				<div class="col">
+					Wed
+				</div>
+				<div class="col">
+					Thu
+				</div>
+				<div class="col">
+					Fri
+				</div>
+				<div class="col">
+					Sat
+				</div>
+				<div class="col">
+					Sun
+				</div>
+			</div>
+		</div>
 		<div class="row">
 			<div class="col">
-				MONDAY
 			</div>
 			<div class="col">
-				TUESDAY
 			</div>
 			<div class="col">
-				WENDSDAY
 			</div>
 			<div class="col">
-				THURSDAY
 			</div>
 			<div class="col">
-				FRIDAY
 			</div>
 			<div class="col">
-				SATURDAY
 			</div>
 			<div class="col">
-				SUNDAY
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-	</div>
-	<div class="row">
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-	</div>
-	<div class="row">
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-	</div>
-	<div class="row">
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-	</div>
-	<div class="row">
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-	</div>
-	<div class="row">
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-		<div class="col">
-		</div>
-	</div>
-</div>
 
+</div>
 <div class="contact-info">
 	<p><b>Contact Me</b></p>
 	<p>linkedin:

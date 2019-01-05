@@ -1,7 +1,4 @@
-var bodyParser = require("body-parser"),
-	mongoose = require("mongoose"),
-	express = require("express"),
-	app = express();
+var mongoose = require("mongoose");
 
 var blogSchema = new mongoose.Schema({
 	title: String,

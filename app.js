@@ -3,6 +3,7 @@ var express     = require("express"),
     app         = express(),
     User = require("./models/user"),
     Blog = require("./models/blog"),
+    Planner = require("./models/planner"),
     LocalStrategy = require("passport-local"),
     passport = require("passport"),
     passportLocalMongoos = require("passport-local-mongoose"),
@@ -15,6 +16,7 @@ var express     = require("express"),
 	path = require('path'),
 	QuillDeltaToHtmlConverter = require('quill-delta-to-html').QuillDeltaToHtmlConverter;
 
+var ObjectId = require('mongodb').ObjectID;
 
 //requiring routes
 var indexRoutes = require("./routes/index")
@@ -142,7 +144,7 @@ app.delete("/blogs/:id", function(req, res) {
 			User.update(
 				{"blogs": req.params.id},
 				{"$pull": {"blogs": req.params.id}},
-				function(err, res) {
+				function(err, user) {
 					if(err) {
 						console.log(err);
 					}
@@ -238,16 +240,108 @@ app.get("/planner", function(req, res) {
 	var year = date.getFullYear();
 	var month = date.getMonth() + 1;
 	var day = date.getDate();
-	var weekday = date.getDay(); 
-	res.render("planner/index", {year: year, month: month, day: day, weekday: weekday});
+	var weekday = date.getDay();
+
+	Planner.findOne({username: res.locals.currentUser.username, create: {"$gte": new Date(year, month-1, day-1), "$lt": new Date(year, month+1, day+5)}}, 
+		function(err, plans) {
+			if(err) {
+				console.log(err);
+			}
+			else {
+				if(!plans) {
+					console.log(null);
+					res.render("planner/index", {year: year, month: month, day: day, weekday: weekday,  plans: null});
+				}
+				else {
+					res.render("planner/index", {year: year, month: month, day: day, weekday: weekday,  plans: plans});
+				}
+			}
+		});
+}); 
+
+app.post("/planner", function(req, res) {
+	var date = new Date();
+	var year = date.getFullYear();
+	var month = date.getMonth();
+	var day = date.getDate();
+	//add todo to databse
+	Planner.findOne({username: res.locals.currentUser.username, create: {"$gte": new Date(year, month, day), "$lt": new Date(year, month, day+1)}}, function(err, plans) {
+		if(err) {
+			console.log(err);
+		}
+		else {
+				if(plans) {
+					var len = plans.length; 
+					var plan_content = {plan: req.body.todo};
+					plans.content.push(plan_content);
+					plans.save(function(err, data) {
+						if(err) {
+							console.log(err);
+						}
+						else {
+							console.log(data);
+							res.redirect("/planner");
+						}
+					});
+
+				}
+				else {
+					Planner.create({username: res.locals.currentUser.username}, function(err, newPlan) {
+						if(err) {
+							console.log(err);
+						}
+						else {
+							var plan_content = {plan: req.body.todo};
+							newPlan.content.push(plan_content);
+							newPlan.save(function(err, data) {
+								if(err) {
+									console.log(err);
+								}
+								else {
+									User.findOne({username: res.locals.currentUser.username}).populate("plans").exec(function(err, foundUser){
+										if(err) {
+											console.log(err);
+										}
+										else {
+											foundUser.plans.push(newPlan);
+											foundUser.save(function(err, data){
+							                	if(err){
+							                    	console.log(err);
+							                	} else {
+													res.redirect("/planner");
+							                	}
+						            		});
+										}
+									});
+								}
+							});
+						}
+					});
+				}
+		}
+	});
 });
 
-
+app.delete("/plans/:id/delete/:plan_id", function(req, res) {
+	Planner.update(
+		{"_id": ObjectId(req.params.id)},
+		{"$pull": {"content": {"_id": ObjectId(req.params.plan_id)}}},
+		function(err, plans) {
+			if(err) {
+				console.log(err);
+			}
+			else {
+				console.log("successfully removed event");
+				res.redirect("/planner");
+			}
+	});
+});
 
 
 function isPublic(value) {
   return value.privacy == "public";
 }
+
 
 let port = process.env.PORT;
 if (port == null || port == "") {

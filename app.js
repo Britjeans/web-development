@@ -242,7 +242,7 @@ app.get("/planner", function(req, res) {
 	var day = date.getDate();
 	var weekday = date.getDay();
 
-	Planner.findOne({username: res.locals.currentUser.username, create: {"$gte": new Date(year, month-1, day-1), "$lt": new Date(year, month+1, day+5)}}, 
+	Planner.findOne({username: res.locals.currentUser.username, create: {"$gte": new Date(year, month-1, day), "$lt": new Date(year, month-1, day+1)}}, 
 		function(err, plans) {
 			if(err) {
 				console.log(err);
